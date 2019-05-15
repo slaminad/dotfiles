@@ -12,6 +12,7 @@ set relativenumber		" show relative line numbers
 set cursorline			" highlight current line
 set showmatch			" highlight matching [{()}]
 set ruler				" show current position
+set laststatus=2		" always show status bar
 
 " Tabs and text
 set tabstop=4			" width of a TAB
