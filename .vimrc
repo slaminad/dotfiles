@@ -15,6 +15,7 @@ set ruler				" show current position
 
 " Tabs and text
 set tabstop=4			" width of a TAB
+set shiftwidth=4		" set TAB width when using >
 set wrap				" wrap lines
 set autoindent			" auto indent
 set wildmenu			" auto-completion
