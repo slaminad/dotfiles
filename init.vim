@@ -6,7 +6,7 @@ set showcmd				" show commands
 set hidden				" allows you to open new files and hide the currently open one
 
 " Visual
-colorscheme peachpuff	" set peachpuff as the default colorscheme
+colorscheme elflord		" set elflord as the default colorscheme (anyone know the difference between elflord and ron?)
 set number				" show line numbers
 set relativenumber		" show relative line numbers
 set cursorline			" highlight current line
@@ -30,10 +30,8 @@ set smartcase			" include only uppercase words with uppercase search term
 " Mappings
 nnoremap <leader><space> :nohlsearch<CR>
 
-" Plugins - currently using: vim-plug
-call plug#begin('~/.vim/plugs')
-
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }	" Vim-Go - Go plugin for Vim
-Plug 'vim-airline/vim-airline'						" Vim Airline - statusline
-
+"Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'vim-airline/vim-airline'
 call plug#end()
