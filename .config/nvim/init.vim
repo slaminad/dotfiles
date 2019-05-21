@@ -30,7 +30,10 @@ set ignorecase			" include matching uppercase words with lowercase search term
 set smartcase			" include only uppercase words with uppercase search term
 
 " Mappings
+" clear search highlighting
 nnoremap <leader><space> :nohlsearch<CR>
+" toggle listing invisible characters
+nnoremap <leader>l :set list!<CR>
 
 "Plugins
 call plug#begin('~/.vim/plugged')
