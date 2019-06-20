@@ -8,7 +8,7 @@ set wildmenu			" auto-completion for commands
 set autoread			" autoload file changes
 
 " Visual
-colorscheme elflord		" set elflord as the default colorscheme (anyone know the difference between elflord and ron?)
+colorscheme desert		" set desert as the default colorscheme
 set number				" show line numbers
 set relativenumber		" show relative line numbers
 set cursorline			" highlight current line
@@ -28,6 +28,9 @@ set incsearch			" search as characters are entered (incremental search)
 set hlsearch			" highlight matches
 set ignorecase			" include matching uppercase words with lowercase search term
 set smartcase			" include only uppercase words with uppercase search term
+
+" File specific formatting
+autocmd Filetype yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Mappings
 " clear search highlighting
