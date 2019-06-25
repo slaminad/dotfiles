@@ -30,7 +30,8 @@ set ignorecase			" include matching uppercase words with lowercase search term
 set smartcase			" include only uppercase words with uppercase search term
 
 " File specific formatting
-autocmd Filetype yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype yaml,yml setlocal ts=2 sts=2 sw=2 expandtab	" Yaml formatting
+autocmd Filetype text setlocal linebreak showbreak=...\			" Text file formatting
 
 " Mappings
 " clear search highlighting
