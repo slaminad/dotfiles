@@ -30,8 +30,8 @@ set ignorecase			" include matching uppercase words with lowercase search term
 set smartcase			" include only uppercase words with uppercase search term
 
 " File specific formatting
-autocmd Filetype yaml,yml setlocal ts=2 sts=2 sw=2 expandtab	" Yaml formatting
-autocmd Filetype text setlocal linebreak showbreak=...\			" Text file formatting
+autocmd Filetype yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype text setlocal noexpandtab linebreak showbreak=...\ 
 
 " Mappings
 " clear search highlighting
@@ -39,8 +39,18 @@ nnoremap <leader><space> :nohlsearch<CR>
 " toggle listing invisible characters
 nnoremap <leader>l :set list!<CR>
 
-"Plugins
+" Helps setup auto install for vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
