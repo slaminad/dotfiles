@@ -7,4 +7,4 @@ alias ll='ls -laF'
 alias c='cd ..'
 
 # Alias vi to vim as a Homebrew/OSX workaround
-alias vi=vim
+alias vi=nvim
