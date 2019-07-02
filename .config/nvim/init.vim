@@ -8,7 +8,6 @@ set wildmenu			" auto-completion for commands
 set autoread			" autoload file changes
 
 " Visual
-colorscheme desert		" set desert as the default colorscheme
 set number				" show line numbers
 set relativenumber		" show relative line numbers
 set cursorline			" highlight current line
