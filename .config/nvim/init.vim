@@ -37,6 +37,8 @@ autocmd Filetype text setlocal noexpandtab linebreak showbreak=...\
 nnoremap <leader><space> :nohlsearch<CR>
 " toggle listing invisible characters
 nnoremap <leader>l :set list!<CR>
+" toggle numbers/relative numbers
+nnoremap <leader>n :set number! relativenumber!<CR>
 
 " Helps setup auto install for vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
