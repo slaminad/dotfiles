@@ -30,7 +30,7 @@ set smartcase			" include only uppercase words with uppercase search term
 
 " File specific formatting
 autocmd Filetype yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype text setlocal noexpandtab linebreak showbreak=...\ 
+autocmd Filetype text setlocal noexpandtab linebreak showbreak=...\
 
 " Mappings
 " clear search highlighting
@@ -51,7 +51,11 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
+
+" Lightline colorscheme
+let g:lightline = {'colorscheme': 'one'}
