@@ -33,11 +33,14 @@ autocmd Filetype yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype text setlocal noexpandtab linebreak showbreak=...\
 
 " Mappings
-" clear search highlighting
+" change <leader> key to spacebar
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+" <Leader> <Space> - clear search highlighting
 nnoremap <leader><space> :nohlsearch<CR>
-" toggle listing invisible characters
+" <Leader> l - toggle listing invisible characters
 nnoremap <leader>l :set list!<CR>
-" toggle numbers/relative numbers
+" <Leader> n - toggle numbers/relative numbers
 nnoremap <leader>n :set number! relativenumber!<CR>
 
 " Helps setup auto install for vim-plug
@@ -51,11 +54,35 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " Lightline colorscheme
 let g:lightline = {'colorscheme': 'one'}
+
+" Vim-go settings
+" Prefer goimports over gofmt
+let g:go_fmt_command = "goimports"
+" Experimental mode
+let g:go_fmt_experimental = 1
+" only show quickfix list instead of quickfix + location
+let g:go_list_type = "quickfix"
+
+" Vim-go keybinds
+" <Leader> i - :GoInfo
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+" <Leader> t - :GoTest
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+" <Leader> r - :GoRun
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+" <Leader> b - :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
