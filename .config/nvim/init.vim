@@ -1,32 +1,34 @@
 " Vim Config
 
 " General
-syntax on				" enable syntax highlighting
-set showcmd				" show commands
-set hidden				" allows you to open new files and hide the currently open one
-set wildmenu			" auto-completion for commands
-set autoread			" autoload file changes
+syntax on               " enable syntax highlighting
+set showcmd             " show commands
+set hidden              " allows you to open new files and hide the currently open one
+set wildmenu            " auto-completion for commands
+set autoread            " autoload file changes
 
 " Visual
-set number				" show line numbers
-set relativenumber		" show relative line numbers
-set cursorline			" highlight current line
-set showmatch			" highlight matching [{()}]
-set ruler				" show current position
-set laststatus=2		" always show status bar
+set number              " show line numbers
+set relativenumber      " show relative line numbers
+set cursorline          " highlight current line
+set showmatch           " highlight matching [{()}]
+set ruler               " show current position
+set laststatus=2        " always show status bar
 set scrolloff=1         " always show at least 1 line above/below the cursor
 
 " Tabs and text
-set tabstop=4			" width of a TAB
-set shiftwidth=4		" set TAB width when using >
-set wrap				" wrap lines
-set autoindent			" auto indent
+set tabstop=4                   " width of a TAB
+set shiftwidth=4                " set TAB width when using >
+set smarttab                    " smartly inserts tabs according to tabstop and shiftwidth
+set wrap                        " wrap lines
+set autoindent                  " auto indent
+set backspace=indent,eol,start  " allow backspacing over autoindent, linebreaks, and start of insert
 
 " Search
-set incsearch			" search as characters are entered (incremental search)
-set hlsearch			" highlight matches
-set ignorecase			" include matching uppercase words with lowercase search term
-set smartcase			" include only uppercase words with uppercase search term
+set incsearch           " search as characters are entered (incremental search)
+set hlsearch            " highlight matches
+set ignorecase          " include matching uppercase words with lowercase search term
+set smartcase           " include only uppercase words with uppercase search term
 
 " File specific formatting
 autocmd Filetype yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
@@ -52,7 +54,6 @@ endif
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
