@@ -6,6 +6,7 @@ set showcmd             " show commands
 set hidden              " allows you to open new files and hide the currently open one
 set wildmenu            " auto-completion for commands
 set autoread            " autoload file changes
+set mouse=              " disable mouse mode
 
 " Visual
 set number              " show line numbers
@@ -30,6 +31,12 @@ set hlsearch            " highlight matches
 set ignorecase          " include matching uppercase words with lowercase search term
 set smartcase           " include only uppercase words with uppercase search term
 
+" Highlighting (hi)
+" make MatchParen (%) more clear which one the cursor is at
+hi MatchParen ctermbg=8 guibg=DarkGray
+" make non-text (such as extra spaces at EOL) red
+hi NonText ctermfg=1 guibg=Red
+
 " File specific formatting
 autocmd Filetype yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype text setlocal noexpandtab linebreak showbreak=...\
@@ -45,6 +52,10 @@ nnoremap <leader>l :set list!<CR>
 " <Leader> n - toggle numbers/relative numbers
 nnoremap <leader>n :set number! relativenumber!<CR>
 
+" ============================================
+" This section is all plugin configurations
+" ============================================
+
 " Helps setup auto install for vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -52,12 +63,25 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'yggdroot/indentline'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
+
+" FZF settings
+" <Leader> f - :Files
+nmap <leader>f :Files<CR>
+
+" Indentline settings
+" Set color
+let g:indentLine_setColors = 242
+" Disable by default
+let g:indentLine_enabled = 0
+" <Leader> y - toggle indentLine (for yaml)
+autocmd FileType yaml,yml nmap <leader>y :silent! IndentLinesToggle<CR>
 
 " Lightline colorscheme
 let g:lightline = {'colorscheme': 'one'}
@@ -74,9 +98,9 @@ let g:go_list_type = "quickfix"
 " <Leader> i - :GoInfo
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 " <Leader> t - :GoTest
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
 " <Leader> r - :GoRun
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
 " <Leader> b - :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
